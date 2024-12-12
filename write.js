@@ -10,6 +10,24 @@ function 등록함수( ){  console.log('등록함수 실행');
     let title = document.querySelector('.title').value;     //console.log( title );
     let content = document.querySelector('.content').value;   //console.log( content );
     let password = document.querySelector('.password').value;  //console.log( password );
+
+    localStorage.setItem("title", title);         // 제목 저장
+    localStorage.setItem("content", content);     // 내용 저장
+    localStorage.setItem("password", password);   // 비밀번호 저장
+
+    alert("게시물 등록이 완료되었습니다.\n\n제목: " + title + "\n내용: " + content + "\n비밀번호: " + password);
+
+    // 페이지가 로드될 때 로컬 스토리지에서 데이터 읽어오기
+    window.onload = function() {
+    const title = localStorage.getItem("title");
+    const content = localStorage.getItem("content");
+    const password = localStorage.getItem("password");
+
+    // 로컬 스토리지에 저장된 데이터가 있으면 입력값으로 설정
+    if (title) document.getElementById('title').value = title;
+    if (content) document.getElementById('content').value = content;
+    if (password) document.getElementById('password').value = password;
+    
             // 오류 : Cannot read properties of null (reading 'value')
             // 이유 : HTML과 JS에 입력한 선택자가 일치하지 않을경우 , value속성이 없는 마크업 , 오타
     // 2. 처리 ,  입력받은값들과 날짜/조회수 하나의 문자열(CSV)구성 -> 배열 저장 .push
@@ -33,3 +51,8 @@ function 등록함수( ){  console.log('등록함수 실행');
     // 3. 출력 , 출력함수 실행 
     출력함수(); // 변수호출 : 변수명  , 함수호출 : 함수명()
 } // f end 
+
+
+
+    
+ 
