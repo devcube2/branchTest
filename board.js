@@ -4,6 +4,7 @@ let 게시물목록 = [
     '세번째 게시물 제목,세번째 게시물 내용,7891,2024-11-28,0'
 ]
 
+
 // [3] 출력함수 , 실행조건 : js열렸을때 최초 1번 실행 , 등록/삭제/수정 처리 성공시 실행
 출력함수() // <----- JS가 실행될때 최초 1번만 실행
 function 출력함수(){
@@ -25,4 +26,8 @@ function 출력함수(){
     }
     // (3) 출력 , .innerHTML
     tbody.innerHTML = html
+
+    localStorage.setItem('board', JSON.stringify(게시물목록))
+    let board = JSON.parse(localStorage.getItem('board'))
+    console.log(board)
 }
